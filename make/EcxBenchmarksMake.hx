@@ -8,8 +8,6 @@ using hxmake.haxelib.HaxelibPlugin;
 class EcxBenchmarksMake extends hxmake.Module {
 
 	function new() {
-		config.description = "Benchmarks for ECX library";
-		config.version = "0.0.1";
 		config.classPath = ["src"];
 		config.testPath = [];
 		config.devDependencies = [
