@@ -1,4 +1,4 @@
-package ecx.benchmarks;
+package ecs.benchmarks;
 
 import haxe.ds.StringMap;
 import hxsuite.benchmarks.BenchmarkReport;
@@ -17,6 +17,7 @@ class Benchmarks {
         #end
 
         var b = new EcsTest();
+//        var b = new BranchTest();
         b.run();
 
         trace("TARGET: " + haxe.macro.Compiler.getDefine("target"));
@@ -42,7 +43,16 @@ class Benchmarks {
     static function printReport(benchmark:Benchmark, onCompleted:Void->Void) {
         var loading:Int = 0;
 
-        for(r in benchmark.reports) {
+        var keys:Array<String> = [];
+        for(key in benchmark.reports.keys()) {
+            keys.push(key);
+        }
+        keys.sort(function(a, b) {
+            return Reflect.compare(a, b);
+        });
+
+        for(key in keys) {
+            var r = benchmark.reports.get(key);
             var ops = r.timeAvg > 0.001 ? Std.string(Math.ffloor(r.ops / r.timeAvg)) : "IMMEDIATELY";
             var str = r.method + " : " + ops + " op/s (" + formatTime(r.timeAvg) + " ms.)";
 
@@ -53,7 +63,8 @@ class Benchmarks {
         }
 
         // post results
-        for(r in benchmark.reports) {
+        for(key in keys) {
+            var r = benchmark.reports.get(key);
             postResult(r, function() {
                 --loading;
                 if(loading <= 0) {

@@ -23,7 +23,7 @@ class EcxBenchmarksMake extends hxmake.Module {
 
 		var suiteTask = new SuiteBuildTask();
 		suiteTask.classPath = ["benchmarks"];
-		suiteTask.main = "ecx.benchmarks.Benchmarks";
+		suiteTask.main = "ecs.benchmarks.Benchmarks";
 		suiteTask.libraries.push("ecx");
 		suiteTask.libraries.push("ash");
 		suiteTask.libraries.push("hxE");
