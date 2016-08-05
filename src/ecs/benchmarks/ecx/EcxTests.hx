@@ -20,7 +20,7 @@ class EcxTests {
 
     public function new() {
         result = Std.int(Math.random() * 200);
-        world = Engine.initialize().createWorld(new WorldConfig([]));
+        world = Engine.initialize(0x800).createWorld(new WorldConfig([]));
         _pos1 = world.engine.mapTo(EcxPosition1);
         _pos2 = world.engine.mapTo(EcxPosition2);
         _pos3 = world.engine.mapTo(EcxPosition3);
@@ -31,22 +31,47 @@ class EcxTests {
         entities = [];
         eids = [];
 
+//        for(i in 0...1000) {
+//            var e = world.create();
+//            e.create(EcxPosition1).randomize();
+//            e.create(EcxPosition3).randomize();
+//            e.create(EcxPosition4).randomize();
+//            entities.push(e);
+//            eids.push(e.id);
+//        }
         for(i in 0...1000) {
             var e = world.create();
-            e.create(EcxPosition1).randomize();
-            e.create(EcxPosition3).randomize();
-            e.create(EcxPosition4).randomize();
             entities.push(e);
             eids.push(e.id);
         }
+        for(i in 0...1000) {
+            var e = entities[i];
+            e.create(EcxPosition1).randomize();
+        }
+
+        for(i in 0...1000) {
+            var e = entities[i];
+            e.create(EcxPosition3).randomize();
+        }
+
+        for(i in 0...1000) {
+            var e = entities[i];
+            e.create(EcxPosition4).randomize();
+        }
+
         world.invalidate();
+
+//        trace("+++++++++++");
+//        for(eid in eids) {
+//            trace(eid);
+//        }
 
         if(entities.length == 0) {
             throw "ECX list is empty";
         }
     }
 
-    public function update() {
+    public function updateRef() {
         var result:Float = this.result;
         var entities = this.entities;
 
@@ -73,7 +98,7 @@ class EcxTests {
         this.result = result;
     }
 
-    public function updateWithMapping() {
+    public function update() {
         var result:Float = this.result;
         var eids = this.eids;
 
@@ -107,7 +132,7 @@ class EcxTests {
         this.result = result;
     }
 
-    public function updateWithMappingFA() {
+    public function updateFA() {
         var result:Float = this.result;
         var eids = this.eids;
         var result:Float = 0;

@@ -18,14 +18,22 @@ class Benchmarks {
 
         var b = new EcsTest();
 //        var b = new BranchTest();
+//        var b = new F32Test();
+        #if cpp
+        cpp.vm.Gc.enterGCFreeZone();
+        #end
+
         b.run();
+
+        #if cpp
+        cpp.vm.Gc.exitGCFreeZone();
+        #end
 
         trace("TARGET: " + haxe.macro.Compiler.getDefine("target"));
         printReport(b, function() {
             exit();
         });
     }
-
 
     static function exit() {
         #if (!nodejs && js)
