@@ -22,12 +22,12 @@ class EcsTest extends Benchmark {
 
     public function new() {
         super();
-
-        _ecx = new EcxTests();
-        _ash = new AshTests();
-//        _hxe = new HxeTests();
-//        _edge = new EdgeTests();
-        _pure = new PureTests();
+        var count = 1000;
+        _ecx = new EcxTests(count);
+        _ash = new AshTests(count);
+//        _hxe = new HxeTests(count);
+//        _edge = new EdgeTests(count);
+        _pure = new PureTests(count);
     }
 
     @:test
@@ -82,18 +82,18 @@ class EcsTest extends Benchmark {
         _pure.dispose();
     }
 
-    @:test
-    public function ecx_ref() {
-        _ecx.setup();
-        @body {
-            _ecx.updateRef();
-        }
-        _result = _ecx.result;
-        if(_result == 0) {
-            throw "ECX bad result";
-        }
-        _ecx.dispose();
-    }
+//    @:test
+//    public function ecx_ref() {
+//        _ecx.setup();
+//        @body {
+//            _ecx.updateRef();
+//        }
+//        _result = _ecx.result;
+//        if(_result == 0) {
+//            throw "ECX bad result";
+//        }
+//        _ecx.dispose();
+//    }
 
     @:test
     public function ecx() {

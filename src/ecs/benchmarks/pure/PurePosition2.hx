@@ -1,8 +1,7 @@
 package ecs.benchmarks.pure;
 
-import ecx.Component;
+class PurePosition2 {
 
-class PurePosition2 extends Component {
     public var x:Float = 0;
     public var y:Float = 0;
 

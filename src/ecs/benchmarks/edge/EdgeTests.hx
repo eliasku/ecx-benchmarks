@@ -10,8 +10,10 @@ class EdgeTests {
 
     public var entities:Array<Entity>;
     public var result:Float;
+    public var count:Int;
 
-    public function new() {
+    public function new(count:Int) {
+        this.count = count;
         result = Std.int(Math.random() * 200);
 
         world = new World();
@@ -21,7 +23,7 @@ class EdgeTests {
 
     public function setup() {
         entities = [];
-        for(i in 0...1000) {
+        for(i in 0...count) {
             var e = world.engine.create([
                 EdgePosition1.random(),
                 EdgePosition2.random(),
@@ -40,10 +42,23 @@ class EdgeTests {
 
         for(e in system.view) {
             var data = e.data;
-            result += data.p1.x + data.p1.y;
-            result += data.p2.x + data.p2.y;
-            //result += data.p3.x + data.p3.y;
-            result += data.p4.x + data.p4.y;
+            var p1 = data.p1;
+            var p2:EdgePosition3 = null;
+            var p3 = data.p3;
+            var p4 = data.p4;
+            if(p1 != null) {
+                result += p1.x + p1.y;
+            }
+            if(p2 != null) {
+                result += p2.x + p2.y;
+            }
+            if(p3 != null) {
+                result += p3.x + p3.y;
+            }
+            if(p4 != null) {
+                result += p4.x + p4.y;
+            }
+
         }
 
         this.result = result;

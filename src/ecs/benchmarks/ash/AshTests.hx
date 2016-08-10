@@ -10,8 +10,10 @@ class AshTests {
     public var list:NodeList<AshNode>;
     public var entities:Array<Entity>;
     public var result:Float;
+    public var count:Int;
 
-    public function new() {
+    public function new(count:Int) {
+        this.count = count;
         result = Std.int(Math.random() * 200);
         engine = new Engine();
         list = engine.getNodeList(AshNode);
@@ -19,10 +21,10 @@ class AshTests {
 
     public function setup() {
         entities = [];
-        for(i in 0...1000) {
+        for(i in 0...count) {
             var e = new ash.core.Entity()
             .add(new AshPosition1().randomize())
-            .add(new AshPosition2().randomize())
+            .add(new AshPosition3().randomize())
             .add(new AshPosition4().randomize());
             engine.addEntity(e);
             entities.push(e);
@@ -39,10 +41,24 @@ class AshTests {
         var nodes = this.list;
 
         for(node in nodes) {
-            result += node.p1.x + node.p1.y;
-            result += node.p2.x + node.p2.y;
-            //result += n.p3.x + n.p3.y;
-            result += node.p4.x + node.p4.y;
+            var p1 = node.p1;
+            var p2 = null;
+            var p3 = node.p3;
+            var p4 = node.p4;
+
+            // We know that it can't be null, but checking for justice
+            if(p1 != null) {
+                result += p1.x + p1.y;
+            }
+            if(p2 != null) {
+                result += p2.x + p2.y;
+            }
+            if(p3 != null) {
+                result += p3.x + p3.y;
+            }
+            if(p4 != null) {
+                result += p4.x + p4.y;
+            }
         }
 
         this.result = result;

@@ -10,13 +10,15 @@ class HxeTests {
 
     public var entities:Array<Entity>;
     public var result:Float;
+    public var count:Int;
 
     var _hxe1:ComponentTypeSlot<HxePosition1>;
     var _hxe2:ComponentTypeSlot<HxePosition2>;
     var _hxe3:ComponentTypeSlot<HxePosition3>;
     var _hxe4:ComponentTypeSlot<HxePosition4>;
 
-    public function new() {
+    public function new(count:Int) {
+        this.count = count;
         result = Std.int(Math.random() * 200);
 
         world = new EntityWorld();
@@ -33,7 +35,7 @@ class HxeTests {
 
     public function setup() {
         entities = [];
-        for(i in 0...1000) {
+        for(i in 0...count) {
             var e = world.create();
             e.addComponent(new HxePosition1().randomize());
             e.addComponent(new HxePosition3().randomize());
