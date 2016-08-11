@@ -1,6 +1,6 @@
 package ecs.benchmarks.ecx;
 
-import ecx.Entity;
+import ecx.EntityView;
 import ecx.MapTo;
 import ecx.WorldConfig;
 import ecx.Engine;
@@ -10,7 +10,7 @@ class EcxTests {
 
     public var world:World;
     public var entities:Array<Int>;
-    public var entityMutators:Array<Entity>;
+    public var entityMutators:Array<EntityView>;
     public var result:Float;
     public var count:Int;
 
