@@ -9,7 +9,6 @@ import ecx.World;
 class EcxTests {
 
     public var world:World;
-    public var engine:Engine;
     public var entities:Array<Int>;
     public var entityMutators:Array<Entity>;
     public var result:Float;
@@ -23,12 +22,11 @@ class EcxTests {
     public function new(count:Int) {
         this.count = count;
         result = Std.int(Math.random() * 200);
-        engine = Engine.initialize(0x800);
-        world = engine.createWorld(new WorldConfig([]));
-        _pos1 = engine.mapTo(EcxPosition1);
-        _pos2 = engine.mapTo(EcxPosition2);
-        _pos3 = engine.mapTo(EcxPosition3);
-        _pos4 = engine.mapTo(EcxPosition4);
+        world = Engine.initialize().createWorld(new WorldConfig([]), 0x800);
+        _pos1 = world.mapTo(EcxPosition1);
+        _pos2 = world.mapTo(EcxPosition2);
+        _pos3 = world.mapTo(EcxPosition3);
+        _pos4 = world.mapTo(EcxPosition4);
     }
 
     public function setup() {
