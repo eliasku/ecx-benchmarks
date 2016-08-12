@@ -1,5 +1,7 @@
 package ecs.benchmarks.ecx;
 
+import ecx.ds.CArray;
+import ecx.Entity;
 import ecx.EntityView;
 import ecx.MapTo;
 import ecx.WorldConfig;
@@ -9,8 +11,8 @@ import ecx.World;
 class EcxTests {
 
     public var world:World;
-    public var entities:Array<Int>;
-    public var entityMutators:Array<EntityView>;
+    public var entities:CArray<Entity>;
+    public var views:CArray<EntityView>;
     public var result:Float;
     public var count:Int;
 
@@ -30,25 +32,25 @@ class EcxTests {
     }
 
     public function setup() {
-        entities = [];
-        entityMutators = [];
+        entities = new CArray(count);
+        views = new CArray(count);
 
         for(i in 0...count) {
-            var wrapper = world.createEntity();
-            entities.push(wrapper.id);
-            entityMutators.push(wrapper);
+            var entity = world.create();
+            entities[i] = entity;
+            views[i] = world.edit(entity);
         }
 
         for(i in 0...count) {
-            entityMutators[i].create(EcxPosition1).randomize();
+            views[i].create(EcxPosition1).randomize();
         }
 
         for(i in 0...count) {
-            entityMutators[i].create(EcxPosition3).randomize();
+            views[i].create(EcxPosition3).randomize();
         }
 
         for(i in 0...count) {
-            entityMutators[i].create(EcxPosition4).randomize();
+            views[i].create(EcxPosition4).randomize();
         }
 
         world.invalidate();
@@ -60,7 +62,7 @@ class EcxTests {
 
 //    public function updateRef() {
 //        var result:Float = this.result;
-//        var entities = this.entityMutators;
+//        var entities = this.views;
 //
 //        for(i in 0...entities.length) {
 //            var e = entities[i];
