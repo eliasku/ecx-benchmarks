@@ -2,4 +2,5 @@
 
 Benchmarks for [ECX library](https://github.com/eliasku/ecx)
 
-![result](https://github.com/eliasku/ecx-benchmarks/blob/master/result.png)
+[View results](https://eliasku.github.io/ecx_benchmarks.html)
+
