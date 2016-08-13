@@ -26,8 +26,8 @@ class EdgeTests {
         for(i in 0...count) {
             var e = world.engine.create([
                 EdgePosition1.random(),
-                EdgePosition2.random(),
-                    //EdgePosition3.random(),
+//                EdgePosition2.random(),
+                EdgePosition3.random(),
                 EdgePosition4.random()
             ]);
             entities.push(e);
@@ -43,7 +43,7 @@ class EdgeTests {
         for(e in system.view) {
             var data = e.data;
             var p1 = data.p1;
-            var p2:EdgePosition3 = null;
+            var p2:EdgePosition2 = null;
             var p3 = data.p3;
             var p4 = data.p4;
             if(p1 != null) {

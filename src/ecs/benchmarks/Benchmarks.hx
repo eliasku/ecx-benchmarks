@@ -30,6 +30,7 @@ class Benchmarks {
         #end
 
         trace("TARGET: " + haxe.macro.Compiler.getDefine("target"));
+        trace("TEST ID: " + haxe.macro.Compiler.getDefine("testid"));
         printReport(b, function() {
             exit();
         });

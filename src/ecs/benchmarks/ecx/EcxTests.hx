@@ -60,32 +60,32 @@ class EcxTests {
         }
     }
 
-//    public function updateRef() {
-//        var result:Float = this.result;
-//        var entities = this.views;
-//
-//        for(i in 0...entities.length) {
-//            var e = entities[i];
-//            var c1:EcxPosition1 = e.get(EcxPosition1);
-//            if(c1 != null) {
-//                result += c1.x + c1.y;
-//            }
-//            var c2:EcxPosition2 = e.get(EcxPosition2);
-//            if(c2 != null) {
-//                result += c2.x + c2.y;
-//            }
-//            var c3:EcxPosition3 = e.get(EcxPosition3);
-//            if(c3 != null) {
-//                result += c3.x + c3.y;
-//            }
-//            var c4:EcxPosition4 = e.get(EcxPosition4);
-//            if(c4 != null) {
-//                result += c4.x + c4.y;
-//            }
-//        }
-//
-//        this.result = result;
-//    }
+    public function updateView() {
+        var result:Float = this.result;
+        var entities = this.views;
+
+        for(i in 0...entities.length) {
+            var e:EntityView = entities[i];
+            var c1:EcxPosition1 = e.get(EcxPosition1);
+            if(c1 != null) {
+                result += c1.x + c1.y;
+            }
+            var c2:EcxPosition2 = e.get(EcxPosition2);
+            if(c2 != null) {
+                result += c2.x + c2.y;
+            }
+            var c3:EcxPosition3 = e.get(EcxPosition3);
+            if(c3 != null) {
+                result += c3.x + c3.y;
+            }
+            var c4:EcxPosition4 = e.get(EcxPosition4);
+            if(c4 != null) {
+                result += c4.x + c4.y;
+            }
+        }
+
+        this.result = result;
+    }
 
     public function update() {
         var result:Float = this.result;
