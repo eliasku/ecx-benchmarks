@@ -11,6 +11,8 @@ import ecx.World;
 class EcxTests {
 
     public var world:World;
+
+    // TODO: use Family<>
     public var entities:CArray<Entity>;
     public var views:CArray<EntityView>;
     public var result:Float;
