@@ -18,6 +18,7 @@ class EcxTests {
     public var result:Float;
     public var count:Int;
 
+    var _system:EcxSystem;
     var _pos1:MapTo<EcxPosition1>;
     var _pos2:MapTo<EcxPosition2>;
     var _pos3:MapTo<EcxPosition3>;
@@ -26,7 +27,10 @@ class EcxTests {
     public function new(count:Int) {
         this.count = count;
         result = Std.int(Math.random() * 200);
-        world = Engine.initialize().createWorld(new WorldConfig([]), 0x800);
+        var config = new WorldConfig();
+        config.add(new EcxSystem());
+        world = Engine.initialize().createWorld(config, count);
+        _system = world.resolve(EcxSystem);
         _pos1 = world.mapTo(EcxPosition1);
         _pos2 = world.mapTo(EcxPosition2);
         _pos3 = world.mapTo(EcxPosition3);
@@ -68,22 +72,20 @@ class EcxTests {
 
         for(i in 0...entities.length) {
             var e:EntityView = entities[i];
+
             var c1:EcxPosition1 = e.get(EcxPosition1);
-            if(c1 != null) {
-                result += c1.x + c1.y;
-            }
+            result += c1.x + c1.y;
+
             var c2:EcxPosition2 = e.get(EcxPosition2);
             if(c2 != null) {
                 result += c2.x + c2.y;
             }
+
             var c3:EcxPosition3 = e.get(EcxPosition3);
-            if(c3 != null) {
-                result += c3.x + c3.y;
-            }
+            result += c3.x + c3.y;
+
             var c4:EcxPosition4 = e.get(EcxPosition4);
-            if(c4 != null) {
-                result += c4.x + c4.y;
-            }
+            result += c4.x + c4.y;
         }
 
         this.result = result;
@@ -91,7 +93,7 @@ class EcxTests {
 
     public function update() {
         var result:Float = this.result;
-        var entities = this.entities;
+        var entities = _system.entities;
 
         var pos1:MapTo<EcxPosition1> = _pos1;
         var pos2:MapTo<EcxPosition2> = _pos2;
@@ -100,22 +102,20 @@ class EcxTests {
         @body {
             for(i in 0...entities.length) {
                 var entity = entities[i];
+
                 var c1 = pos1.get(entity);
-                if(c1 != null) {
-                    result += c1.x + c1.y;
-                }
+                result += c1.x + c1.y;
+
                 var c2 = pos2.get(entity);
-                if(c2 != null) {
+                if(c2 != null /** OPTIONAL **/) {
                     result += c2.x + c2.y;
                 }
+
                 var c3 = pos3.get(entity);
-                if(c3 != null) {
-                    result += c3.x + c3.y;
-                }
+                result += c3.x + c3.y;
+
                 var c4 = pos4.get(entity);
-                if(c4 != null) {
-                    result += c4.x + c4.y;
-                }
+                result += c4.x + c4.y;
             }
         }
 

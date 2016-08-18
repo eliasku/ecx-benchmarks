@@ -47,18 +47,14 @@ class AshTests {
             var p4 = node.p4;
 
             // We know that it can't be null, but checking for justice
-            if(p1 != null) {
-                result += p1.x + p1.y;
-            }
+            result += p1.x + p1.y;
+
             if(p2 != null) {
                 result += p2.x + p2.y;
             }
-            if(p3 != null) {
-                result += p3.x + p3.y;
-            }
-            if(p4 != null) {
-                result += p4.x + p4.y;
-            }
+
+            result += p3.x + p3.y;
+            result += p4.x + p4.y;
         }
 
         this.result = result;

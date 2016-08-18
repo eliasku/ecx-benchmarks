@@ -55,21 +55,18 @@ class PureTests {
         for(i in 0...p1.length) {
             var index = entities[i];
             var c1 = p1[index];
-            if(c1 != null) {
-                result += c1.x + c1.y;
-            }
+            result += c1.x + c1.y;
+
             var c2 = p2[index];
             if(c2 != null) {
                 result += c2.x + c2.y;
             }
+
             var c3 = p3[index];
-            if(c3 != null) {
-                result += c3.x + c3.y;
-            }
+            result += c3.x + c3.y;
+
             var c4 = p4[index];
-            if(c4 != null) {
-                result += c4.x + c4.y;
-            }
+            result += c4.x + c4.y;
         }
 
         this.result = result;

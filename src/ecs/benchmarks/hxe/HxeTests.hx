@@ -58,21 +58,18 @@ class HxeTests {
 
         for(e in entities) {
             var c1:HxePosition1 = hxe1.get(e);
-            if(c1 != null) {
-                result += c1.x + c1.y;
-            }
+            result += c1.x + c1.y;
+
             var c2:HxePosition2 = hxe2.get(e);
             if(c2 != null) {
                 result += c2.x + c2.y;
             }
+
             var c3:HxePosition3 = hxe3.get(e);
-            if(c3 != null) {
-                result += c3.x + c3.y;
-            }
+            result += c3.x + c3.y;
+
             var c4:HxePosition4 = hxe4.get(e);
-            if(c4 != null) {
-                result += c4.x + c4.y;
-            }
+            result += c4.x + c4.y;
         }
 
         this.result = result;

@@ -14,8 +14,9 @@ class EcxBenchmarksMake extends hxmake.Module {
 			"hxsuite" => "haxelib",
 			"ecx" => "haxelib",
 			"ash" => "haxelib",
-			"hxE" => "haxelib",
-			"edge" => "haxelib"
+			"eskimo" => "haxelib",
+			"edge" => "haxelib",
+			"hxE" => "haxelib"
 		];
 
 		apply(HaxelibPlugin);
@@ -24,14 +25,18 @@ class EcxBenchmarksMake extends hxmake.Module {
 		var suiteTask = new SuiteBuildTask();
 		suiteTask.classPath = ["benchmarks"];
 		suiteTask.main = "ecs.benchmarks.Benchmarks";
+		suiteTask.defaultApps = ["ecx", "ash", "eskimo"];
+		suiteTask.defaultTargets = ["swf", "node", "cs", "cpp"];
 		suiteTask.libraries.push("ecx");
 		suiteTask.libraries.push("ash");
-		suiteTask.libraries.push("hxE");
+		suiteTask.libraries.push("eskimo");
 		suiteTask.libraries.push("edge");
+		suiteTask.libraries.push("hxE");
 		suiteTask.doFirst(function(_) {
 			Haxelib.install("ash");
-			Haxelib.install("hxE");
+			Haxelib.install("eskimo");
 			Haxelib.install("edge");
+			Haxelib.install("hxE");
 		});
 		task("run", suiteTask);
 	}

@@ -42,23 +42,20 @@ class EdgeTests {
 
         for(e in system.view) {
             var data = e.data;
+
             var p1 = data.p1;
+            result += p1.x + p1.y;
+
             var p2:EdgePosition2 = null;
-            var p3 = data.p3;
-            var p4 = data.p4;
-            if(p1 != null) {
-                result += p1.x + p1.y;
-            }
             if(p2 != null) {
                 result += p2.x + p2.y;
             }
-            if(p3 != null) {
-                result += p3.x + p3.y;
-            }
-            if(p4 != null) {
-                result += p4.x + p4.y;
-            }
 
+            var p3 = data.p3;
+            result += p3.x + p3.y;
+
+            var p4 = data.p4;
+            result += p4.x + p4.y;
         }
 
         this.result = result;

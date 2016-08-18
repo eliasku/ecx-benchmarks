@@ -1,5 +1,6 @@
 package ecs.benchmarks;
 
+import haxe.ds.ArraySort;
 import haxe.ds.StringMap;
 import hxsuite.benchmarks.BenchmarkReport;
 import haxe.Http;
@@ -30,17 +31,17 @@ class Benchmarks {
         #end
 
         trace("TARGET: " + haxe.macro.Compiler.getDefine("target"));
-        trace("TEST ID: " + haxe.macro.Compiler.getDefine("testid"));
-        printReport(b, function() {
-            exit();
-        });
+        trace("APP: " + haxe.macro.Compiler.getDefine("app"));
+        printReport(b, exit);
     }
 
     static function exit() {
+        trace("exit");
         #if (!nodejs && js)
         js.Browser.window.close();
         #elseif flash
         if(flash.external.ExternalInterface.available) {
+            trace("close");
             flash.external.ExternalInterface.call("close");
         }
         flash.system.System.exit(0);
@@ -50,13 +51,14 @@ class Benchmarks {
     }
 
     static function printReport(benchmark:Benchmark, onCompleted:Void->Void) {
+        trace("printReport: " + benchmark.reports);
         var loading:Int = 0;
 
         var keys:Array<String> = [];
         for(key in benchmark.reports.keys()) {
             keys.push(key);
         }
-        keys.sort(function(a, b) {
+        ArraySort.sort(keys, function(a, b) {
             return Reflect.compare(a, b);
         });
 
@@ -90,13 +92,17 @@ class Benchmarks {
     static function postResult(report:BenchmarkReport, onCompleted:Void->Void) {
         var params:StringMap<String> = new StringMap();
         params.set("cmd", "post");
+
+        params.set("app", haxe.macro.Compiler.getDefine("app"));
+        params.set("target", haxe.macro.Compiler.getDefine("target"));
+
         params.set("suite", report.suite);
         params.set("method", report.method);
+
         params.set("time", Std.string(report.timeAvg));
         params.set("max", Std.string(report.timeMax));
         params.set("min", Std.string(report.timeMin));
         params.set("ops", Std.string(report.ops));
-        params.set("target", haxe.macro.Compiler.getDefine("target"));
 
         var url = 'http://' + HOST_NAME + ":" + PORT;
 
