@@ -106,6 +106,18 @@ class Benchmarks {
 
         var url = 'http://' + HOST_NAME + ":" + PORT;
 
+        http(url, params,
+            function(_) {
+                onCompleted();
+            },
+            function(err) {
+                trace(url);
+                trace("ERROR: " + err);
+                postResult(report, onCompleted);
+            });
+    }
+
+    static function http(url:String, params:StringMap<String>, onCompleted:String->Void, onError:String->Void) {
         #if nodejs
         var list = [];
         for(key in params.keys()) {
@@ -113,7 +125,10 @@ class Benchmarks {
         }
         var http = js.node.Http.get(url + "/?" + list.join("&"), function(response:js.node.http.IncomingMessage) {
             response.on("data", function() {
-                onCompleted();
+                onCompleted("");
+            });
+            response.on("error", function(err) {
+                onError(err);
             });
         });
         #else
@@ -122,12 +137,10 @@ class Benchmarks {
             http.addParameter(key, params.get(key));
         }
         http.onData = function(data:String) {
-            trace("DATA: " + data);
-            onCompleted();
+            onCompleted(data);
         };
-        http.onError = function(msg:String) {
-            trace(url);
-            trace("ERROR: " + msg);
+        http.onError = function(err:String) {
+            onError(err);
         }
         http.request(false);
         #end
