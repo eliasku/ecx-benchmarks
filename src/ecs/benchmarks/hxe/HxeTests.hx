@@ -22,10 +22,10 @@ class HxeTests {
         result = Std.int(Math.random() * 200);
 
         world = new EntityWorld();
-        _hxe1 = new ComponentTypeSlot(HxePosition1);
-        _hxe2 = new ComponentTypeSlot(HxePosition2);
-        _hxe3 = new ComponentTypeSlot(HxePosition3);
-        _hxe4 = new ComponentTypeSlot(HxePosition4);
+        _hxe1 = new ComponentTypeSlot<HxePosition1>(HxePosition1);
+        _hxe2 = new ComponentTypeSlot<HxePosition2>(HxePosition2);
+        _hxe3 = new ComponentTypeSlot<HxePosition3>(HxePosition3);
+        _hxe4 = new ComponentTypeSlot<HxePosition4>(HxePosition4);
 
         _hxe1.setWorld(world);
         _hxe2.setWorld(world);
