@@ -37,6 +37,9 @@ class EcxBenchmarksMake extends hxmake.Module {
 			Haxelib.install("eskimo");
 			Haxelib.install("edge");
 			Haxelib.install("hxE");
+			Haxelib.install("ecx");
+			// required for `node` target
+			Haxelib.install("hxnodejs");
 		});
 		task("run", suiteTask);
 	}
