@@ -22,14 +22,12 @@ cs: Mono v4.4.0
 
 ## How to run
 
-*NOTICE: Currently written only for running on Mac, Windows will be added soon!*
-
 1. Install https://github.com/eliasku/hxmake
 2. Install https://github.com/eliasku/hxsuite
 
 For the first time try just run a couple of targets and apps
 ```
-hxmake run -app=ash -target=node
+(haxelib run )hxmake run -app=ash -target=node
 ```
 Apps:
 - ash
