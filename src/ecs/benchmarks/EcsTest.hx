@@ -12,11 +12,13 @@ typedef TestLibrary = ecs.benchmarks.eskimo.EskimoTests;
 typedef TestLibrary = ecs.benchmarks.hxe.HxeTests;
 #elseif (app=='edge')
 typedef TestLibrary = ecs.benchmarks.edge.EdgeTests;
+#elseif (app=='seagal')
+typedef TestLibrary = ecs.benchmarks.seagal.SeagalTests;
 #elseif (app=='pure')
 typedef TestLibrary = ecs.benchmarks.pure.PureTests;
 #end
 
-#if (app=='eskimo')
+#if ((app=='eskimo') || (app=='seagal'))
 @:iterations(100)
 @:runs(1)
 #else

@@ -8,6 +8,9 @@ using hxmake.haxelib.HaxelibPlugin;
 class EcxBenchmarksMake extends hxmake.Module {
 
 	function new() {
+
+		var includeSeagal = project.args.indexOf("--include-seagal") >= 0;
+
 		config.classPath = ["src"];
 		config.testPath = [];
 		config.devDependencies = [
@@ -18,6 +21,10 @@ class EcxBenchmarksMake extends hxmake.Module {
 			"edge" => "haxelib",
 			"hxE" => "haxelib"
 		];
+
+		if(includeSeagal) {
+			config.devDependencies.set("seagal", "haxelib");
+		}
 
 		apply(HaxelibPlugin);
 		apply(IdeaPlugin);
@@ -32,6 +39,10 @@ class EcxBenchmarksMake extends hxmake.Module {
 		suiteTask.libraries.push("eskimo");
 		suiteTask.libraries.push("edge");
 		suiteTask.libraries.push("hxE");
+		if(includeSeagal) {
+			suiteTask.libraries.push("seagal");
+		}
+
 		suiteTask.doFirst(function(_) {
 			Haxelib.install("ash");
 			Haxelib.install("eskimo");
