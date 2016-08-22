@@ -12,7 +12,6 @@ class EcxTests {
 
     public var world:World;
 
-    // TODO: use Family<>
     public var entities:CArray<Entity>;
     public var views:CArray<EntityView>;
     public var result:Float;
@@ -99,57 +98,25 @@ class EcxTests {
         var pos2:MapTo<EcxPosition2> = _pos2;
         var pos3:MapTo<EcxPosition3> = _pos3;
         var pos4:MapTo<EcxPosition4> = _pos4;
-        @body {
-            for(i in 0...entities.length) {
-                var entity = entities[i];
 
-                var c1 = pos1.get(entity);
-                result += c1.x + c1.y;
+        for(entity in entities) {
+            var c1 = pos1.get(entity);
+            result += c1.x + c1.y;
 
-                var c2 = pos2.get(entity);
-                if(c2 != null /** OPTIONAL **/) {
-                    result += c2.x + c2.y;
-                }
-
-                var c3 = pos3.get(entity);
-                result += c3.x + c3.y;
-
-                var c4 = pos4.get(entity);
-                result += c4.x + c4.y;
+            var c2 = pos2.get(entity);
+            if(c2 != null /** OPTIONAL **/) {
+                result += c2.x + c2.y;
             }
+
+            var c3 = pos3.get(entity);
+            result += c3.x + c3.y;
+
+            var c4 = pos4.get(entity);
+            result += c4.x + c4.y;
         }
 
         this.result = result;
     }
-
-//    public function updateFA() {
-//        var result:Float = this.result;
-//        var entities = this.entities;
-//
-//        @body {
-//            for(i in 0...entities.length) {
-//                var entity = entities[i];
-//                var c1 = _pos1.get(entity);
-//                if(c1 != null) {
-//                    result += c1.x + c1.y;
-//                }
-//                var c2 = _pos2.get(entity);
-//                if(c2 != null) {
-//                    result += c2.x + c2.y;
-//                }
-//                var c3 = _pos3.get(entity);
-//                if(c3 != null) {
-//                    result += c3.x + c3.y;
-//                }
-//                var c4 = _pos4.get(entity);
-//                if(c4 != null) {
-//                    result += c4.x + c4.y;
-//                }
-//            }
-//        }
-//
-//        this.result = result;
-//    }
 
     public function dispose() {
         for(i in 0...entities.length) {
@@ -157,5 +124,4 @@ class EcxTests {
         }
         world.invalidate();
     }
-
 }
