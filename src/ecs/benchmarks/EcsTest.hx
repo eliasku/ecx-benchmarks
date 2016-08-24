@@ -4,6 +4,10 @@ import hxsuite.benchmarks.Benchmark;
 
 #if ((app=='ecx') || (app=='ecx_view'))
 typedef TestLibrary = ecs.benchmarks.ecx.EcxTests;
+#elseif (app=='ecx02')
+typedef TestLibrary = ecs.benchmarks.ecx02.Ecx02Tests;
+#elseif (app=='ecx04')
+typedef TestLibrary = ecs.benchmarks.ecx04.Ecx04Tests;
 #elseif (app=='ash')
 typedef TestLibrary = ecs.benchmarks.ash.AshTests;
 #elseif (app=='eskimo')

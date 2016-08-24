@@ -19,7 +19,8 @@ class EcxBenchmarksMake extends hxmake.Module {
 			"ash" => "haxelib",
 			"eskimo" => "haxelib",
 			"edge" => "haxelib",
-			"hxE" => "haxelib"
+			"hxE" => "haxelib",
+			"hotmem" => "haxelib"///
 		];
 
 		if(includeSeagal) {
@@ -39,6 +40,7 @@ class EcxBenchmarksMake extends hxmake.Module {
 		suiteTask.libraries.push("eskimo");
 		suiteTask.libraries.push("edge");
 		suiteTask.libraries.push("hxE");
+		suiteTask.libraries.push("hotmem");///
 		if(includeSeagal) {
 			suiteTask.libraries.push("seagal");
 		}
