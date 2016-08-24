@@ -1,5 +1,6 @@
 package ecs.benchmarks.ecx02;
 
+import hotmem.F32;
 import hotmem.HotMemory;
 import ecx.ds.CArray;
 import ecx.Entity;
@@ -12,7 +13,7 @@ class Ecx02Tests {
     public var world:World;
 
     public var entities:CArray<Entity>;
-    public var result:Float;
+    public var result:F32;
     public var count:Int;
 
     var _positionStorage:EcxPositionsStorage;
