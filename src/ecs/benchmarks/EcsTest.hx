@@ -2,21 +2,15 @@ package ecs.benchmarks;
 
 import hxsuite.benchmarks.Benchmark;
 
-// STABLE ECX
-#if ((app=='ecx') || (app=='ecx_view'))
+#if (app=='ecx')
 typedef TestLibrary = ecs.benchmarks.ecx.EcxTests;
+#elseif (app=='ecx_hot')
+typedef TestLibrary = ecs.benchmarks.ecx_hot.EcxHotTests;
 
-// HOT ECX CONCEPT
-#elseif (app=='ecx_hot1')
-typedef TestLibrary = ecs.benchmarks.ecx_hot1.EcxHot1Tests;
-#elseif (app=='ecx_hot2')
-typedef TestLibrary = ecs.benchmarks.ecx_hot2.EcxHot2Tests;
-
-// NEW ECX 0.2.0 (COLD / HOT)
-#elseif (app=='ecx2')
-typedef TestLibrary = ecs.benchmarks.ecx2.Ecx2Tests;
-#elseif (app=='ecx2_hot')
-typedef TestLibrary = ecs.benchmarks.ecx2_hot.Ecx2HotTests;
+#elseif (app=='pure')
+typedef TestLibrary = ecs.benchmarks.pure.PureTests;
+#elseif (app=='pure_hot')
+typedef TestLibrary = ecs.benchmarks.pure_hot.PureHotTests;
 
 #elseif (app=='ash')
 typedef TestLibrary = ecs.benchmarks.ash.AshTests;
@@ -28,8 +22,6 @@ typedef TestLibrary = ecs.benchmarks.hxe.HxeTests;
 typedef TestLibrary = ecs.benchmarks.edge.EdgeTests;
 #elseif (app=='seagal')
 typedef TestLibrary = ecs.benchmarks.seagal.SeagalTests;
-#elseif (app=='pure')
-typedef TestLibrary = ecs.benchmarks.pure.PureTests;
 #end
 
 #if ((app=='eskimo') || (app=='seagal'))
@@ -54,11 +46,7 @@ class EcsTest extends Benchmark {
     public function iteration() {
         _lib.setup();
         @body {
-            #if (app=='ecx_view')
-            _lib.updateView();
-            #else
             _lib.update();
-            #end
         }
         _result = _lib.result;
         if(_result == 0) {

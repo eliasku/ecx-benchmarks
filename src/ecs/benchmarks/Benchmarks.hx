@@ -18,8 +18,7 @@ class Benchmarks {
         #end
 
         var b = new EcsTest();
-//        var b = new BranchTest();
-//        var b = new F32Test();
+
         #if cpp
         cpp.vm.Gc.enterGCFreeZone();
         #end

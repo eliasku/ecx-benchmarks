@@ -1,7 +1,6 @@
-package ecs.benchmarks.ecx2_hot;
+package ecs.benchmarks.ecx_hot;
 
 import hotmem.F32;
-import ecs.benchmarks.ecx2_hot.Ecx2HotPositionBase;
 import hotmem.HotMemory;
 import ecx.ds.CArray;
 import ecx.Entity;
@@ -9,7 +8,7 @@ import ecx.WorldConfig;
 import ecx.Engine;
 import ecx.World;
 
-class Ecx2HotTests {
+class EcxHotTests {
 
     public var world:World;
 
@@ -17,29 +16,31 @@ class Ecx2HotTests {
     public var result:F32;
     public var count:Int;
 
-    public var system:Ecx2HotSystem;
-    var _pos1:Ecx2HotPosition1;
-    var _pos2:Ecx2HotPosition2;
-    var _pos3:Ecx2HotPosition3;
-    var _pos4:Ecx2HotPosition4;
+    public var system:EcxHotSystem;
+    var _pos1:EcxHotPosition1;
+    var _pos2:EcxHotPosition2;
+    var _pos3:EcxHotPosition3;
+    var _pos4:EcxHotPosition4;
 
     public function new(count:Int) {
         this.count = count;
         result = Std.int(Math.random() * 200);
-        var config = new WorldConfig();
-        config.add(new Ecx2HotSystem());
-        config.add(new Ecx2HotPosition1());
-        config.add(new Ecx2HotPosition2());
-        config.add(new Ecx2HotPosition3());
-        config.add(new Ecx2HotPosition4());
+
         HotMemory.initialize(50);
+
+        var config = new WorldConfig();
+        config.add(new EcxHotSystem());
+        config.add(new EcxHotPosition1());
+        config.add(new EcxHotPosition2());
+        config.add(new EcxHotPosition3());
+        config.add(new EcxHotPosition4());
         world = Engine.initialize().createWorld(config, count);
 
-        system = world.resolve(Ecx2HotSystem);
-        _pos1 = world.resolve(Ecx2HotPosition1);
-        _pos2 = world.resolve(Ecx2HotPosition2);
-        _pos3 = world.resolve(Ecx2HotPosition3);
-        _pos4 = world.resolve(Ecx2HotPosition4);
+        system = world.resolve(EcxHotSystem);
+        _pos1 = world.resolve(EcxHotPosition1);
+        _pos2 = world.resolve(EcxHotPosition2);
+        _pos3 = world.resolve(EcxHotPosition3);
+        _pos4 = world.resolve(EcxHotPosition4);
     }
 
     public function setup() {

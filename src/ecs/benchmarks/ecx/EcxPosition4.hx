@@ -1,16 +1,17 @@
 package ecs.benchmarks.ecx;
 
-import ecx.Component;
+import ecx.storage.AutoComp;
+import ecx.Entity;
 
-class EcxPosition4 extends Component {
-    public var x:Float = 0;
-    public var y:Float = 0;
+class EcxPosition4 extends AutoComp<EcxPositionData> {
 
-    public function new() {}
-
-    public function randomize():EcxPosition4 {
-        x = Math.random();
-        y = Math.random();
-        return this;
+    public function randomize(entity:Entity):EcxPositionData {
+        var data = get(entity);
+        if(data == null) {
+            data = create(entity);
+        }
+        data.x = Math.random();
+        data.y = Math.random();
+        return data;
     }
 }

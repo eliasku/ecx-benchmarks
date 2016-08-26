@@ -1,4 +1,4 @@
-package ecs.benchmarks.ecx2_hot;
+package ecs.benchmarks.ecx_hot;
 
 import ecx.types.ComponentType;
 import ecx.Service;
@@ -7,7 +7,7 @@ import hotmem.F32Array;
 import ecx.Entity;
 
 @:base
-class Ecx2HotPositionBase extends Service implements Component {
+class EcxHotPositionBase extends Service implements Component {
 
 	public var x:F32Array;
 	public var y:F32Array;
@@ -32,20 +32,4 @@ class Ecx2HotPositionBase extends Service implements Component {
 	public function __componentType() {
 		return ComponentType.INVALID;
 	}
-}
-
-class Ecx2HotPosition1 extends Ecx2HotPositionBase {
-	public function new() {}
-}
-
-class Ecx2HotPosition2 extends Ecx2HotPositionBase {
-	public function new() {}
-}
-
-class Ecx2HotPosition3 extends Ecx2HotPositionBase {
-	public function new() {}
-}
-
-class Ecx2HotPosition4 extends Ecx2HotPositionBase {
-	public function new() {}
 }

@@ -1,8 +1,8 @@
-package ecs.benchmarks.ecx2;
+package ecs.benchmarks.ecx;
 
 @:unreflective
 @:final
-class Ecx2PositionData {
+class EcxPositionData {
 
 	public var x:Float = 0;
 	public var y:Float = 0;

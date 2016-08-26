@@ -1,6 +1,7 @@
 package ecs.benchmarks.pure;
 
 import ecx.ds.CArray;
+
 class PureTests {
 
     public var result:Float;
