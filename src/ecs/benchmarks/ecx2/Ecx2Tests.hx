@@ -1,6 +1,5 @@
 package ecs.benchmarks.ecx2;
 
-import ecx.Wire;
 import ecx.ds.CArray;
 import ecx.Entity;
 import ecx.WorldConfig;

@@ -1,4 +1,4 @@
-package ecs.benchmarks.ecx02;
+package ecs.benchmarks.ecx_hot1;
 
 import hotmem.F32;
 import hotmem.HotMemory;
@@ -8,7 +8,7 @@ import ecx.WorldConfig;
 import ecx.Engine;
 import ecx.World;
 
-class Ecx02Tests {
+class EcxHot1Tests {
 
     public var world:World;
 
@@ -16,17 +16,17 @@ class Ecx02Tests {
     public var result:F32;
     public var count:Int;
 
-    var _positionStorage:EcxPositionsStorage;
+    var _positionStorage:EcxHot1PositionsStorage;
 
     public function new(count:Int) {
         this.count = count;
         result = Std.int(Math.random() * 200);
         var config = new WorldConfig();
-        config.add(new EcxPositionsStorage());
+        config.add(new EcxHot1PositionsStorage());
         HotMemory.initialize(50);
         world = Engine.initialize().createWorld(config, count);
 
-        _positionStorage = world.resolve(EcxPositionsStorage);
+        _positionStorage = world.resolve(EcxHot1PositionsStorage);
     }
 
     public function setup() {

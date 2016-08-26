@@ -1,10 +1,9 @@
 package ecs.benchmarks.ecx2;
 
-import ecx.Entity;
 import ecx.storage.AutoComp;
-import ecx.storage.ComponentArray;
+import ecx.Entity;
 
-class Ecx2Position1 extends ComponentArray implements AutoComp<Ecx2PositionData> {
+class Ecx2Position1 extends AutoComp<Ecx2PositionData> {
 
     public function randomize(entity:Entity):Ecx2PositionData {
         var data = get(entity);

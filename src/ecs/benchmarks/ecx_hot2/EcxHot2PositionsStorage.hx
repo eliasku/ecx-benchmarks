@@ -1,10 +1,10 @@
-package ecs.benchmarks.ecx04;
+package ecs.benchmarks.ecx_hot2;
 
 import hotmem.F32Array;
 import ecx.Entity;
 import ecx.System;
 
-class Ecx04PositionsStorage extends System {
+class EcxHot2PositionsStorage extends System {
 
 	public var _position1_x:F32Array;
 	public var _position1_y:F32Array;

@@ -1,10 +1,10 @@
-package ecs.benchmarks.ecx02;
+package ecs.benchmarks.ecx_hot1;
 
 import hotmem.F32Array;
 import ecx.Entity;
 
 @:unreflective
-class EcxPositionHandle {
+class EcxHot1PositionHandle {
 
 	public var handle:Int;
 

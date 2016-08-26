@@ -1,7 +1,7 @@
-package ecs.benchmarks.ecx2hot;
+package ecs.benchmarks.ecx2_hot;
 
 import hotmem.F32;
-import ecs.benchmarks.ecx2hot.Ecx2HotPositionBase;
+import ecs.benchmarks.ecx2_hot.Ecx2HotPositionBase;
 import hotmem.HotMemory;
 import ecx.ds.CArray;
 import ecx.Entity;

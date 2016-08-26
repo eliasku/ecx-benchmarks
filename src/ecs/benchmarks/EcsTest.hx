@@ -6,17 +6,17 @@ import hxsuite.benchmarks.Benchmark;
 #if ((app=='ecx') || (app=='ecx_view'))
 typedef TestLibrary = ecs.benchmarks.ecx.EcxTests;
 
-// HOT ECX
-#elseif (app=='ecx02')
-typedef TestLibrary = ecs.benchmarks.ecx02.Ecx02Tests;
-#elseif (app=='ecx04')
-typedef TestLibrary = ecs.benchmarks.ecx04.Ecx04Tests;
+// HOT ECX CONCEPT
+#elseif (app=='ecx_hot1')
+typedef TestLibrary = ecs.benchmarks.ecx_hot1.EcxHot1Tests;
+#elseif (app=='ecx_hot2')
+typedef TestLibrary = ecs.benchmarks.ecx_hot2.EcxHot2Tests;
 
-// NEW ECX 0.2.0
+// NEW ECX 0.2.0 (COLD / HOT)
 #elseif (app=='ecx2')
 typedef TestLibrary = ecs.benchmarks.ecx2.Ecx2Tests;
-#elseif (app=='ecx2hot')
-typedef TestLibrary = ecs.benchmarks.ecx2hot.Ecx2HotTests;
+#elseif (app=='ecx2_hot')
+typedef TestLibrary = ecs.benchmarks.ecx2_hot.Ecx2HotTests;
 
 #elseif (app=='ash')
 typedef TestLibrary = ecs.benchmarks.ash.AshTests;

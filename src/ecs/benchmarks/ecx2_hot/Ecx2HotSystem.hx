@@ -1,6 +1,6 @@
-package ecs.benchmarks.ecx2hot;
+package ecs.benchmarks.ecx2_hot;
 
-import ecs.benchmarks.ecx2hot.Ecx2HotPositionBase;
+import ecs.benchmarks.ecx2_hot.Ecx2HotPositionBase;
 import ecx.Family;
 import ecx.System;
 
