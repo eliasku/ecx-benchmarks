@@ -8,7 +8,7 @@ Benchmarks for [ECX library](https://github.com/eliasku/ecx)
 
 [View ECX comparison](https://eliasku.github.io/ecx2_versus.html)
 
-[Legacy v0.0.5 results](https://eliasku.github.io/ecx_benchmarks.html)
+[Legacy v0.0.4 results](https://eliasku.github.io/ecx_benchmarks.html) - should be updated to `ecx0.0.5`
 
 Current results environment:
 ```
