@@ -10,6 +10,8 @@ Benchmarks for [ECX library](https://github.com/eliasku/ecx)
 
 [Legacy v0.0.4 results](https://eliasku.github.io/ecx_benchmarks.html) - should be updated to `ecx0.0.5`
 
+- *1 operation* is to process 1000 entities to calculate pairs sum from 3 components `p1.x + p1.y + p3.x + p3.y + p4.x + p4.y` and branch optional `p2` component
+
 Current results environment:
 ```
 MacBook Pro (OSX 10.11.5)
