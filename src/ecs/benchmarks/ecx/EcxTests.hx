@@ -31,7 +31,7 @@ class EcxTests {
         config.add(new EcxPosition2());
         config.add(new EcxPosition3());
         config.add(new EcxPosition4());
-        world = Engine.initialize().createWorld(config, count);
+        world = Engine.createWorld(config, count);
         _system = world.resolve(EcxSystem);
         _pos1 = world.resolve(EcxPosition1);
         _pos2 = world.resolve(EcxPosition2);

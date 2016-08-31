@@ -7,7 +7,7 @@ import hotmem.F32Array;
 import ecx.Entity;
 
 @:base
-class EcxHotPositionBase extends Service implements Component {
+class EcxHotPositionBase extends Service implements Component<Bool> {
 
 	public var x:F32Array;
 	public var y:F32Array;
@@ -23,7 +23,19 @@ class EcxHotPositionBase extends Service implements Component {
 		y[entity.id] = Math.random();
 	}
 
-	inline public function has(entity):Bool {
+	inline public function has(entity:Entity):Bool {
+		return true;
+	}
+
+	inline public function get(entity:Entity):Bool {
+		return true;
+	}
+
+	inline public function set(entity:Entity, fake:Bool) {}
+
+	inline public function create(entity:Entity):Bool {
+		x[entity.id] = 0.0;
+		y[entity.id] = 0.0;
 		return true;
 	}
 

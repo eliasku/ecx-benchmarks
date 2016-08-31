@@ -34,7 +34,7 @@ class EcxHotTests {
         config.add(new EcxHotPosition2());
         config.add(new EcxHotPosition3());
         config.add(new EcxHotPosition4());
-        world = Engine.initialize().createWorld(config, count);
+        world = Engine.createWorld(config, count);
 
         system = world.resolve(EcxHotSystem);
         _pos1 = world.resolve(EcxHotPosition1);
