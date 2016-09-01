@@ -9,7 +9,7 @@ class EcxBenchmarksMake extends hxmake.Module {
 
 	function new() {
 
-		var includeSeagal = project.args.indexOf("--include-seagal") >= 0;
+		var includeWip = project.args.indexOf("--include-wip") >= 0;
 
 		config.classPath = ["src"];
 		config.testPath = [];
@@ -17,14 +17,14 @@ class EcxBenchmarksMake extends hxmake.Module {
 			"hxsuite" => "haxelib",
 			"ecx" => "haxelib",
 			"ash" => "haxelib",
-			"eskimo" => "haxelib",
 			"edge" => "haxelib",
 			"hxE" => "haxelib",
-			"hotmem" => "haxelib"///
+			"hotmem" => "haxelib"
 		];
 
-		if(includeSeagal) {
+		if(includeWip) {
 			config.devDependencies.set("seagal", "haxelib");
+			config.devDependencies.set("eskimo", "haxelib");
 		}
 
 		apply(HaxelibPlugin);
@@ -33,15 +33,15 @@ class EcxBenchmarksMake extends hxmake.Module {
 		var suiteTask = new SuiteBuildTask();
 		suiteTask.classPath = ["benchmarks"];
 		suiteTask.main = "ecs.benchmarks.Benchmarks";
-		suiteTask.defaultApps = ["ecx", "ash", "eskimo"];
-		suiteTask.defaultTargets = ["swf", "node", "cs", "cpp"];
+		suiteTask.defaultApps = ["ecx", "ecx_hot", "ash", "hxe", "edge"];
+		suiteTask.defaultTargets = ["swf", "node", "js", "cs", "java", "cpp"];
 		suiteTask.libraries.push("ecx");
 		suiteTask.libraries.push("ash");
-		suiteTask.libraries.push("eskimo");
 		suiteTask.libraries.push("edge");
 		suiteTask.libraries.push("hxE");
-		suiteTask.libraries.push("hotmem");///
-		if(includeSeagal) {
+		suiteTask.libraries.push("hotmem");
+		if(includeWip) {
+			suiteTask.libraries.push("eskimo");
 			suiteTask.libraries.push("seagal");
 		}
 

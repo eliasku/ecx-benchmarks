@@ -1,6 +1,6 @@
 package ecs.benchmarks.ecx;
 
-import ecx.storage.AutoComp;
+import ecx.AutoComp;
 import ecx.Entity;
 
 class EcxPosition3 extends AutoComp<EcxPositionData> {
