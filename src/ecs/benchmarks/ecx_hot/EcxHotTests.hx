@@ -1,7 +1,6 @@
 package ecs.benchmarks.ecx_hot;
 
 import hotmem.F32;
-import hotmem.HotMemory;
 import ecx.ds.CArray;
 import ecx.Entity;
 import ecx.WorldConfig;
@@ -25,8 +24,6 @@ class EcxHotTests {
     public function new(count:Int) {
         this.count = count;
         result = Std.int(Math.random() * 200);
-
-        HotMemory.initialize(50);
 
         var config = new WorldConfig();
         config.add(new EcxHotSystem());
