@@ -77,7 +77,7 @@ class EcxHotTests {
         for(entity in entities) {
             var c = entity.id;
             result += x1[c] + y1[c];
-            if(entity.isInvalid) {
+            if(!entity) {
                 /** Just to ignore **/
                 result += x2[c] + y2[c];
             }
@@ -90,7 +90,7 @@ class EcxHotTests {
 
     public function dispose() {
         for(i in 0...entities.length) {
-            world.delete(entities[i]);
+            world.destroy(entities[i]);
         }
         world.invalidate();
     }

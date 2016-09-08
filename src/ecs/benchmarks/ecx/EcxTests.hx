@@ -99,7 +99,7 @@ class EcxTests {
 
     public function dispose() {
         for(i in 0...entities.length) {
-            world.delete(entities[i]);
+            world.destroy(entities[i]);
         }
         world.invalidate();
     }
