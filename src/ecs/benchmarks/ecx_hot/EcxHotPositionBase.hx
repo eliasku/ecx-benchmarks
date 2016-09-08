@@ -27,9 +27,13 @@ class EcxHotPositionBase extends Service implements IComponent {
 		return true;
 	}
 
-	inline public function remove(entity:Entity):Void {}
+	inline public function destroy(entity:Entity):Void {}
 	inline public function copy(source:Entity, destination:Entity) {}
 	public function __componentType() {
 		return ComponentType.INVALID;
+	}
+
+	inline public function getObjectSize():Int {
+		return x.getObjectSize() + y.getObjectSize();
 	}
 }

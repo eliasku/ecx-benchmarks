@@ -77,7 +77,7 @@ class EcxHotTests {
         for(entity in entities) {
             var c = entity.id;
             result += x1[c] + y1[c];
-            if(!entity) {
+            if(entity.isNull()) {
                 /** Just to ignore **/
                 result += x2[c] + y2[c];
             }
