@@ -1,10 +1,10 @@
 package ecs.benchmarks.ecx_hot;
 
-import ecx.types.ComponentType;
-import ecx.Service;
-import ecx.IComponent;
-import hotmem.F32Array;
 import ecx.Entity;
+import ecx.IComponent;
+import ecx.Service;
+import ecx.types.ComponentType;
+import hotmem.F32Array;
 
 @:core
 class EcxHotPositionBase extends Service implements IComponent {
@@ -28,7 +28,9 @@ class EcxHotPositionBase extends Service implements IComponent {
 	}
 
 	inline public function destroy(entity:Entity):Void {}
+
 	inline public function copy(source:Entity, destination:Entity) {}
+
 	public function __componentType() {
 		return ComponentType.INVALID;
 	}
