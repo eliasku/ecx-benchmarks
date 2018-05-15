@@ -9,7 +9,7 @@ class EcxBenchmarksMake extends hxmake.Module {
 
 	function new() {
 
-		var includeWip = project.args.indexOf("--include-wip") >= 0;
+		var includeWip = project.arguments.hasProperty("--include-wip");
 
 		config.classPath = ["src"];
 		config.testPath = [];
